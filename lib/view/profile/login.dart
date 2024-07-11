@@ -23,10 +23,11 @@ class LogInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
+      body: Center(
+        child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               spaceHeight(40.h),
               Container(
@@ -47,28 +48,26 @@ class LogInScreen extends StatelessWidget {
                 ),
               ),
               spaceHeight(24.h),
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Username / Email", // Title of the input box
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.black,
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Username / Email", // Title of the input box
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.black,
                     ),
-                    SizedBox(height: 8.h),
-                    CommonTextField(
-                      controller: emailController,
-                      hintText: "Enter the subject",
-                      keyboardType: TextInputType.text,
-                      hasError: false,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 8.h),
+                  CommonTextField(
+                    controller: emailController,
+                    hintText: "Enter the subject",
+                    keyboardType: TextInputType.text,
+                    hasError: false,
+                  ),
+                ],
               ),
               spaceHeight(),
               Column(
@@ -128,7 +127,6 @@ class LogInScreen extends StatelessWidget {
                     letterSpacing: -0.408,
                   ),
                   textAlign: TextAlign.center,
-                  // lineHeight:  22 / 24
                 ),
                 loadingStateWidget: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),

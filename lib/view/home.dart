@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:citizen_femme/view_model/home_api/home_api.dart';
 import 'package:citizen_femme/view_model/home_api/shimmer_effect.dart';
-import 'package:citizen_femme/global/global.dart';
 import 'package:citizen_femme/view/app_header/app_header.dart';
 import 'package:citizen_femme/view/drawer/drawer.dart';
 import 'package:citizen_femme/view_model/home_api/horizontail.dart';
@@ -114,41 +113,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   final horizontalData = horizontalDataList[index];
                   return Container(
-                    width: 150, // Set a fixed width for each item
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          Image.asset('assets/images/latest_all.png'),
-                          Expanded(
-                            child: Text(
-                              horizontalData.name,
-                              maxLines: 3,
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w400,
-                                height:
-                                    1.57, // 22px line height / 14px font size
-                                letterSpacing: -0.41,
-                                color: Colors.black,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                    width: 150.w, // Set a fixed width for each item
+                    margin: EdgeInsets.symmetric(horizontal: 8.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/images/latest_all.png'),
+                        SizedBox(height: 8.h),
+                        Expanded(
+                          child: Text(
+                            horizontalData.name,
+                            maxLines: 3,
+                            style: TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              height: 1.57, // 22px line height / 14px font size
+                              letterSpacing: -0.41,
+                              color: Colors.black,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
                   );
                 },
               ),
             ),
-            spaceHeight(20.h),
+            SizedBox(height: 20.h),
             Container(
+              padding: EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
               height: 117.h,
-              child: Image.asset('assets/images/last.png'),
+              child: Image.asset(
+                'assets/images/last.png',
+                fit: BoxFit.cover, // Ensure the image covers the container
+              ),
             ),
+            SizedBox(height: 20.h), // Add space at the bottom if needed
           ],
         ),
       ),
